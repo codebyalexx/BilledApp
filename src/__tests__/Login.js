@@ -212,8 +212,8 @@ describe("Given that I am a user on login page", () => {
             password: inputData.password,
             status: "connected"
           })
-        )
-      })  
+      )
+    })  
 
     test("It should renders HR dashboard page", () => {
       expect(screen.queryByText('Validations')).toBeTruthy()
