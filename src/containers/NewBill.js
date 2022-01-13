@@ -16,9 +16,14 @@ export default class NewBill {
     new Logout({ document, localStorage, onNavigate })
   }
   handleChangeFile = e => {
+    const acceptedExtensions = ['png', 'jpeg', 'jpg']
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
     const filePath = e.target.value.split(/\\/g)
     const fileName = filePath[filePath.length-1]
+    const fileExtension = fileName.split('.')[fileName.split('.').length - 1]
+
+    if (!acceptedExtensions.includes(fileExtension)) return alert("Ce type de fichier n'est pas supporté.")
+
     this.firestore
       .storage
       .ref(`justificatifs/${fileName}`)
@@ -31,6 +36,9 @@ export default class NewBill {
   }
   handleSubmit = e => {
     e.preventDefault()
+
+    if (!this.fileUrl) return alert("Le justificatif n'est pas défini ou n'a pas encoré été mis en ligne. Merci de patienter ou de réessayer.")
+
     console.log('e.target.querySelector(`input[data-testid="datepicker"]`).value', e.target.querySelector(`input[data-testid="datepicker"]`).value)
     const email = JSON.parse(localStorage.getItem("user")).email
     const bill = {
