@@ -217,8 +217,6 @@ describe("Given that I am a user on login page (alt)", () => {
             status: "connected"
           })
       )
-
-      console.log(window.localStorage);
     })  
 
     test("It should renders HR dashboard page", () => {
