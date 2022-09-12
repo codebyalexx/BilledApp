@@ -22,14 +22,9 @@ describe("Given I am connected as an employee", () => {
         })
       )
 
-      /* It's rendering BillsUI in order to test icon */
+      /* It's adding root div to body */
       const root = document.createElement("div")
       root.setAttribute("id", "root")
-      const billsUI = BillsUI({
-        bills: [],
-        email: "test@example.com"
-      })
-      root.innerHTML = billsUI
       document.body.appendChild(root)
 
       /* It's defining URL to Bills using mocked rooter */
